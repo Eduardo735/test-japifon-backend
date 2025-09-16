@@ -82,14 +82,12 @@ export class UserController {
   @Roles('admin')
   async updateUser(@Body() updateUser: UpdateUserDto, @Param('id') id: string) {
     try {
-      if (!id) {
-        const updatedUser = await this.userService.update(id, updateUser);
-        return {
-          success: true,
-          message: 'Success update user',
-          data: { updatedUser },
-        };
-      } else throw new NotFoundException('Not user id');
+      const updatedUser = await this.userService.update(id, updateUser);
+      return {
+        success: true,
+        message: 'Success update user',
+        data: { updatedUser },
+      };
     } catch (error) {
       return {
         success: false,
@@ -103,14 +101,12 @@ export class UserController {
   @Roles('admin')
   async deleteUser(@Body() updateUser: UpdateUserDto, @Param('id') id: string) {
     try {
-      if (id) {
-        const deletedUser = await this.userService.remove(id);
-        return {
-          success: true,
-          message: 'Success deleted user',
-          data: { deletedUser },
-        };
-      } else throw new NotFoundException('Not user id');
+      const deletedUser = await this.userService.remove(id);
+      return {
+        success: true,
+        message: 'Success deleted user',
+        data: { deletedUser },
+      };
     } catch (error) {
       return {
         success: false,

@@ -9,9 +9,8 @@ import { UpdateUserDto } from '../dto/update-user.dto';
 @Injectable()
 export class UserService {
   async findAll(query: PaginationQueryDto) {
-    const { limit = 10, offset = 1 } = query;
+    const { limit, offset } = query;
     const { data, totalCount } = await clerkClient.users.getUserList({
-      orderBy: '-created_at',
       limit: limit,
       offset: offset,
     });
