@@ -80,13 +80,10 @@ export class UserController {
 
   @Put(':id')
   @Roles('admin')
-  async updateUser(@Body() updateUser: UpdateUserDto) {
+  async updateUser(@Body() updateUser: UpdateUserDto, @Param('id') id: string) {
     try {
-      if (updateUser.id) {
-        const updatedUser = await this.userService.update(
-          updateUser.id,
-          updateUser,
-        );
+      if (!id) {
+        const updatedUser = await this.userService.update(id, updateUser);
         return {
           success: true,
           message: 'Success update user',
@@ -104,10 +101,10 @@ export class UserController {
 
   @Delete(':id')
   @Roles('admin')
-  async deleteUser(@Body() updateUser: UpdateUserDto) {
+  async deleteUser(@Body() updateUser: UpdateUserDto, @Param('id') id: string) {
     try {
-      if (updateUser.id) {
-        const deletedUser = await this.userService.remove(updateUser.id);
+      if (id) {
+        const deletedUser = await this.userService.remove(id);
         return {
           success: true,
           message: 'Success deleted user',
