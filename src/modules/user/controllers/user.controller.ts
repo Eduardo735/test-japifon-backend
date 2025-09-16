@@ -3,9 +3,8 @@ import {
   Controller,
   Delete,
   Get,
-  NotFoundException,
   Param,
-  Put,
+  Patch,
   Query,
   Req,
   UseGuards,
@@ -78,7 +77,7 @@ export class UserController {
     }
   }
 
-  @Put(':id')
+  @Patch(':id')
   @Roles('admin')
   async updateUser(@Body() updateUser: UpdateUserDto, @Param('id') id: string) {
     try {
