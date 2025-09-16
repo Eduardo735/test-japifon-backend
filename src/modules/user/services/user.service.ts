@@ -24,7 +24,7 @@ export class UserService {
 
   async update(id: string, data: Partial<UpdateUserDto>) {
     const params = { firstName: data.first_name, lastName: data.last_name };
-    await clerkClient.users.updateUser(id, params);
+    return await clerkClient.users.updateUser(id, params);
   }
 
   async remove(id: string) {
