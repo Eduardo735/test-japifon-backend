@@ -26,7 +26,7 @@ export class RolesGuard implements CanActivate {
     type RequestWithAuth = Request & {
       claims?: {
         publicMetadata?: {
-          role?: string;
+          roles?: string;
         };
       };
       auth?: {
@@ -45,7 +45,7 @@ export class RolesGuard implements CanActivate {
       [context.getHandler(), context.getClass()],
     );
 
-    const userRole: string | string[] = user.publicMetadata.role as string;
+    const userRole: string | string[] = user.publicMetadata.roles as string;
 
     if (!userRole) {
       throw new ForbiddenException('Required role not met');
