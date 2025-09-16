@@ -1,14 +1,16 @@
-import { Body, Controller, Post } from '@nestjs/common';
-import { Public } from '../decorators/public.decorator';
+import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import { Roles } from '../decorators/roles.decorator';
 import { RegisterDto } from '../dto/login.dto';
 import { AuthService } from '../services/auth.service';
+import { RolesGuard } from '../strategies/RoleGuard';
 
 @Controller('auth')
+@UseGuards(RolesGuard)
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('register')
-  @Public()
+  @Roles('admin')
   async register(@Body() registerDto: RegisterDto) {
     try {
       return {

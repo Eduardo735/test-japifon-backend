@@ -23,13 +23,14 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Get('me')
-  getMe(@Req() req: Request) {
+  @Roles('user', 'admin')
+  async getMe(@Req() req: Request) {
     try {
-      const me = this.userService.getMe(req);
+      const userMe = await this.userService.getMe(req);
       return {
         success: true,
         message: 'Success fetching  privateMetadata ',
-        data: { me },
+        data: { me: userMe },
       };
     } catch (error) {
       return {

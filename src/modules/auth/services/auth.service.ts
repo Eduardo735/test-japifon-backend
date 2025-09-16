@@ -10,7 +10,7 @@ export class AuthService {
       .createUser({
         emailAddress: [emailAddress],
         password: password,
-        publicMetadata: { roles: ['admin'] },
+        publicMetadata: { roles: ['user'] },
       })
       .catch((error: ApiError) => {
         if (error.clerkError && error.errors?.length) {

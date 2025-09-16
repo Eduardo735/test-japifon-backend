@@ -20,7 +20,6 @@ export class RolesGuard implements CanActivate {
       IS_PUBLIC_KEY,
       context.getHandler(),
     );
-    console.log('isPublic :>> ', isPublic);
     if (isPublic) {
       return true;
     }
@@ -47,12 +46,10 @@ export class RolesGuard implements CanActivate {
     );
 
     const userRole: string | string[] = user.publicMetadata.role as string;
-    console.log('requiredRoles ...:>> ', requiredRoles, userRole);
 
     if (!userRole) {
       throw new ForbiddenException('Required role not met');
     }
-
     // If userRole is an array, check intersection
     if (Array.isArray(userRole)) {
       const hasRequiredRole = userRole.some((role: string) =>
