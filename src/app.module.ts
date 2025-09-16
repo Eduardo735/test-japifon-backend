@@ -5,7 +5,7 @@ import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { Modules } from './modules/modules';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import asyncConfigTypeORM from './shared/typeorm/typeorm.config';
-import { ClerkAuthGuard } from './modules/auth/strategies/ClerkAuthGuard';
+import { ClerkAuthGuard } from './shared/guards/ClerkAuthGuard';
 
 const RATE_LIMIT_GUARD = {
   provide: APP_GUARD,

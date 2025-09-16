@@ -1,6 +1,6 @@
 import { Controller, Get, Param, UseGuards } from '@nestjs/common';
 import { GetPokemonByIdService } from '../services/getPokemonById.service';
-import { RolesGuard } from 'src/modules/auth/strategies/RoleGuard';
+import { RolesGuard } from 'src/shared/guards/RoleGuard';
 import { Roles } from 'src/modules/auth/decorators/roles.decorator';
 
 @Controller('pokemon')

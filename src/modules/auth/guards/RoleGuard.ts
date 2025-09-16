@@ -7,9 +7,9 @@ import {
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { Request } from 'express';
-import { ROLES_KEY } from '../decorators/roles.decorator';
+import { ROLES_KEY } from '../../../modules/auth/decorators/roles.decorator';
 import { clerkClient, getAuth } from '@clerk/express';
-import { IS_PUBLIC_KEY } from '../decorators/public.decorator';
+import { IS_PUBLIC_KEY } from '../../../modules/auth/decorators/public.decorator';
 
 @Injectable()
 export class RolesGuard implements CanActivate {

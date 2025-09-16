@@ -11,7 +11,7 @@ import {
 } from '@nestjs/common';
 import { Request } from 'express';
 import { Roles } from 'src/modules/auth/decorators/roles.decorator';
-import { RolesGuard } from 'src/modules/auth/strategies/RoleGuard';
+import { RolesGuard } from 'src/shared/guards/RoleGuard';
 import { PaginationQueryDto } from 'src/shared/dto/pagination-query.dto';
 import { UpdateUserDto } from '../dto/update-user.dto';
 import { UserService } from '../services/user.service';
