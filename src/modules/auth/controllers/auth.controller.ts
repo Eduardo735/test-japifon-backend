@@ -15,7 +15,7 @@ export class AuthController {
     try {
       return {
         success: true,
-        message: 'Success deleted user',
+        message: 'Success created user',
         data: { userCreated: await this.authService.register(registerDto) },
       };
     } catch (error) {
